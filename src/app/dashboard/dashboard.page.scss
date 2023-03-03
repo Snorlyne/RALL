@@ -1,0 +1,249 @@
+
+
+
+.agua-off{
+
+  position: absolute;
+  width: 100%;
+  height: 600%;
+  top: 5000%;
+  left: 2%;
+
+
+  color: #ffffff;
+
+}
+
+.agua-on{
+
+  position: absolute;
+  width: 100%;
+  height: 600%;
+  top: 5000%;
+  left: 2%;
+
+  --background: #93e9be;
+  --background-hover: #9ce0be;
+  --background-activated: #88f4be;
+  --background-focused: #88f4be;
+
+  color: #000000;
+}
+
+.mk01{
+  display: flex;
+  justify-content: stretch;
+}
+
+
+.linterna{
+    position:fixed;
+    left: 25%;
+    right: 25%;
+    height: 40%;
+    top: 8.33%;
+    bottom: 8.33%;
+}
+
+.linterna-boton{
+  position:fixed;
+  left: 8%;
+  right: 25%;
+  height: 100%;
+}
+
+.agua-boton{
+  position:fixed;
+  left: 8%;
+  right: 25%;
+  height: 100%;
+}
+
+.luz-artificial{
+    position: absolute;
+    left: 5%;
+}
+
+.apagado{
+    position: absolute;
+    left: 15%;
+    right: 300%;
+    height: 15%;
+    bottom: 8.33%; 
+    color: #ffffff;
+}
+
+.Encendido{
+  position: absolute;
+  left: 15%;
+  right: 150%;
+  height: 15%;
+  bottom: 8.33%; 
+  color: #000000;
+}
+
+.encendido-agua{
+  position: absolute;
+  left: 15%;
+  right: 150%;
+  height: 15%;
+  bottom: 8.33%; 
+  color: #000000;
+}
+
+.apagado-agua{
+  position: absolute;
+  left: 15%;
+  right: 300%;
+  height: 15%;
+  bottom: 8.33%; 
+  color: #ffffff;
+}
+
+.top-30{
+
+  position: absolute;
+  width: 315%;
+  height: 68%;
+  right: 10%;
+  left: 1%;
+  top: 350%;
+
+  background: #6ca0ff;
+  border-radius: 24%;
+  color: white;
+}
+
+
+.gota{
+  position:fixed;
+  left: 25%;
+  right: 25%;
+  height: 40%;
+  top: 8.33%;
+  bottom: 8.33%;
+}
+
+.Riego-Agua{
+  position: absolute;
+  left: -10%;
+  right: 35%;
+  height: 45%;
+  bottom: 8.33%;
+}
+
+.Regar{
+  position: absolute;
+  left: -130%;
+  right: 0%;
+  height: 15%;
+  bottom: 8.33%; 
+  color: #001d4b;
+}
+
+
+.next{
+    position: relative;
+    margin-left: 25%;
+    bottom: 23%;
+}
+
+.PRENDIDO{
+   display: flex;
+    color: chartreuse;
+    margin-top: 55%;
+}
+
+.Solar {
+  --w:130px;
+  
+  top: 59px;
+  left: 20px;
+  width: var(--w);
+  aspect-ratio: 1;
+  position: absolute;
+  display: inline-grid;
+  place-content: center;
+  margin: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.Solar:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 0;
+  background: conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+
+.luz-solar{
+    position: absolute;
+    left: 37.3%;
+    top: 55.5%;
+}
+
+
+
+
+
+
+  ion-fab-button::part(native) {
+    border-radius: 15px;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,.3), 0px 1px 3px 1px rgba(0,0,0,.15);
+    color: black;
+  }
+      
+  ion-fab-button::part(native):hover::after {
+    background-color: #a3e681;
+  }
+  
+  ion-fab-button::part(native):active::after {
+    background-color: #87d361;
+  }
+
+  ion-alert.custom-alert {
+    --backdrop-opacity: 0.7;
+  }
+  
+  .custom-alert .alert-button-group {
+    padding: 8px;
+  }
+  
+  button.alert-button.alert-button-confirm {
+    background-color: var(--ion-color-success);
+    color: var(--ion-color-success-contrast);
+  }
+  
+  .md button.alert-button.alert-button-confirm {
+    border-radius: 4px;
+  }
+  
+  .ios .custom-alert button.alert-button {
+    border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)
+  }
+  
+  .ios button.alert-button.alert-button-cancel {
+    border-right: 0;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+  }
+  
+  .ios button.alert-button.alert-button-confirm {
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 13px;
+  }
+  
+  .cronometro{
+    position: relative;
+    left: 250%;
+    top: -30%;
+    margin: -30%;
+  }
+
+.ion-page{
+  background-image: url("/img/wave.png");
+  
+}

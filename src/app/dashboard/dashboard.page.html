@@ -1,5 +1,4 @@
-<div class="ion-page" id="main-content">
-  <ion-header>
+<ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button default-href="login"></ion-back-button>
@@ -11,38 +10,43 @@
       </ion-buttons>
 
       <ion-title class="mk01">
-        <div style="display: flex; justify-content: stretch;">
-        <h1>MK01</h1>
-        <div>
-          <ion-icon class="PRENDIDO" name="radio-button-on-outline"></ion-icon>
+        <div style="display: flex; justify-content: stretch">
+          <h1>MK01</h1>
+          <div>
+            <ion-icon
+              class="PRENDIDO"
+              name="radio-button-on-outline"
+            ></ion-icon>
+          </div>
         </div>
-      </div>
       </ion-title>
     </ion-toolbar>
-
-    <div class="next">
-      <ion-fab slot="fixed" vertical="top" horizontal="start" [edge]="true">
-        <ion-fab-button size="small" color="light" shape="round">
-          <ion-icon name="chevron-forward-outline"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-list side="bottom">
-          <ion-button fill="clear">
-            <ion-item>
-              <ion-icon name="hardware-chip-outline" slot="start"></ion-icon>
-              <ion-label>MK01</ion-label>
-            </ion-item>
-          </ion-button>
-        </ion-fab-list>
-      </ion-fab>
-    </div>
   </ion-header>
 
-  <ion-content class="fondo">
+  <ion-content [fullscreen]="true">
+    <div style="display: flex; flex-direction: column; justify-content: space-between;">
     <div>
       <h6 style="position: relative; left: 30px">Ultima vez regado</h6>
     </div>
+    <ion-card class="counter">
+      <ion-card-content class="counter-content">
+        <div class="counter-row">
+          <div class="counter-column">
+            <div class="counter-value"*ngIf="horas < 10">0{{horas}}</div>
+            <div class="counter-value"*ngIf="horas >= 10">{{horas}}</div>
+            <div class="counter-label">Horas</div>
+          </div>
+          <div class="counter-column">
+            <div class="counter-value"*ngIf="minutos < 10">0{{minutos}}</div>
+            <div class="counter-value" *ngIf="minutos >= 10">{{minutos}}</div>
+            <div class="counter-label">Minutos</div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+      
 
-    <ion-card>
+    <!-- <ion-card>
       <ion-card-header style="display: flex">
         <ion-card-subtitle
           >Hace
@@ -70,7 +74,7 @@
           </ion-grid>
         </ion-card-subtitle>
       </ion-card-header>
-    </ion-card>
+    </ion-card> -->
 
     <div>
       <div
@@ -84,38 +88,23 @@
       <ion-text class="luz-solar">Clima</ion-text>
     </div>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col class="ion-text-center">
-          <ion-button
-            (click)="menuRiego()"
-            [ngClass]="{'agua-on': activo, 'agua-off': !activo}"
-          >
-            <ion-icon
-              slot="start"
-              name="water-outline"
-              class="agua-boton"
-            ></ion-icon>
-            <p
-              style="
-                margin-right: 54.5%;
-                margin-bottom: 15%;
-                text-transform: none;
-              "
-            >
-              Agua
-            </p>
-            <div>
-              <sub
-                [ngClass]="{'encendido-agua': activo, 'apagado-agua': !activo}"
-                *ngIf="riego_on_off"
-              >
-                {{riego_on_off}}
-              </sub>
-            </div>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-button
+      (click)="menuRiego()"
+      [ngClass]="{'agua-on': activo, 'agua-off': !activo}"
+    >
+      <ion-icon slot="start" name="water-outline" class="agua-boton"></ion-icon>
+      <p style="margin-right: 54.5%; margin-bottom: 15%; text-transform: none">
+        Agua
+      </p>
+      <div>
+        <sub
+          [ngClass]="{'encendido-agua': activo, 'apagado-agua': !activo}"
+          *ngIf="riego_on_off"
+        >
+          {{riego_on_off}}
+        </sub>
+      </div>
+    </ion-button>
+    </div>
   </ion-content>
-</div>
+

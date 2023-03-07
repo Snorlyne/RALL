@@ -28,7 +28,7 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic/angular": "^6.1.9",
     "cordova-android": "10.1.2",
-    "firebase": "^9.17.1",
+    "firebase": "^9.17.2",
     "ionicons": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

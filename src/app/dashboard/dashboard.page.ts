@@ -184,7 +184,7 @@ export class DashboardPage implements OnInit {
         this.horas2 = this.horas;
         this.minutos2 = this.minutos;
         this.regar();
-      }, 60000);
+      }, 3000);
     }
   }
  async notificacionFoco(){

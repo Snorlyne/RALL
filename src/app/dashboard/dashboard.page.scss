@@ -1,15 +1,10 @@
-
-
-
 .agua-off{
 
   position: absolute;
   width: 100%;
-  height: 600%;
-  top: 5000%;
-  left: 2%;
-
-
+  margin-top: 90%;
+  bottom: 2%;
+  height: fit-content;
   color: #ffffff;
 
 }
@@ -18,9 +13,9 @@
 
   position: absolute;
   width: 100%;
-  height: 600%;
-  top: 5000%;
-  left: 2%;
+  margin-top: 90%;
+  bottom: 2%;
+  height: fit-content;
 
   --background: #93e9be;
   --background-hover: #9ce0be;
@@ -35,22 +30,6 @@
   justify-content: stretch;
 }
 
-
-.linterna{
-    position:fixed;
-    left: 25%;
-    right: 25%;
-    height: 40%;
-    top: 8.33%;
-    bottom: 8.33%;
-}
-
-.linterna-boton{
-  position:fixed;
-  left: 8%;
-  right: 25%;
-  height: 100%;
-}
 
 .agua-boton{
   position:fixed;
@@ -143,9 +122,10 @@
 
 
 .next{
-    position: relative;
-    margin-left: 25%;
+    position: absolute;
+    left: 40%;
     bottom: 23%;
+    right: 70%;
 }
 
 .PRENDIDO{
@@ -236,14 +216,39 @@
     border-top-right-radius: 13px;
   }
   
-  .cronometro{
-    position: relative;
-    left: 250%;
-    top: -30%;
-    margin: -30%;
+  .counter {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-
-.ion-page{
-  background-image: url("/img/wave.png");
   
-}
+  .counter-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+  }
+  
+  .counter-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .counter-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+  }
+  
+  .counter-value {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .counter-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+  

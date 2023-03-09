@@ -1,50 +1,52 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button default-href="login"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-    <ion-toolbar>
-      <ion-buttons slot="primary">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
 
-      <ion-title class="mk01">
-        <div style="display: flex; justify-content: stretch">
-          <h1>MK01</h1>
-          <div>
-            <ion-icon
-              class="PRENDIDO"
-              name="radio-button-on-outline"
-            ></ion-icon>
-          </div>
+    <ion-title class="mk01">
+      <div style="display: flex; justify-content: stretch">
+        <h1>MK01</h1>
+        <div>
+          <ion-icon class="PRENDIDO" name="radio-button-on-outline"></ion-icon>
         </div>
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content [fullscreen]="true">
-    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+<ion-content [fullscreen]="true">
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    "
+  >
     <div>
-      <h6 style="position: relative; left: 30px">Ultima vez regado</h6>
+      <h6 style="position: relative; left: 30px; color: black;">Ultima vez regado</h6>
     </div>
     <ion-card class="counter">
       <ion-card-content class="counter-content">
         <div class="counter-row">
           <div class="counter-column">
-            <div class="counter-value"*ngIf="horas < 10">0{{horas}}</div>
-            <div class="counter-value"*ngIf="horas >= 10">{{horas}}</div>
+            <div class="counter-value" *ngIf="horas < 10">0{{horas}}</div>
+            <div class="counter-value" *ngIf="horas >= 10">{{horas}}</div>
             <div class="counter-label">Horas</div>
           </div>
           <div class="counter-column">
-            <div class="counter-value"*ngIf="minutos < 10">0{{minutos}}</div>
+            <div class="counter-value" *ngIf="minutos < 10">0{{minutos}}</div>
             <div class="counter-value" *ngIf="minutos >= 10">{{minutos}}</div>
             <div class="counter-label">Minutos</div>
           </div>
         </div>
       </ion-card-content>
     </ion-card>
-      
 
     <!-- <ion-card>
       <ion-card-header style="display: flex">
@@ -76,36 +78,24 @@
       </ion-card-header>
     </ion-card> -->
 
-    <div>
-      <div
-        class="Solar"
-        style="--p: 0; --b: 10px; --c: rgb(253, 222, 120)"
-        [ngStyle]="{'--p': data3}"
-        *ngIf="data3 "
-      >
-        {{ data3 }}%
-      </div>
-      <h1 class="luz-solar">Clima</h1>
-    </div>
-
     <ion-card>
       <h5>
-      <img alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/4949/4949153.png" />
+        <img alt="Clima" [src]="rutaImg" />
       </h5>
       <ion-card-header>
-        <ion-card-title class="Soleado">Esta despejado</ion-card-title>
+        <ion-card-title class="Soleado" *ngIf="clima_sol_lluvia">
+          {{clima_sol_lluvia}}</ion-card-title
+        >
       </ion-card-header>
     </ion-card>
 
-
-    <ion-button
+    <ion-button expand="block"
       (click)="menuRiego()"
-      [ngClass]="{'agua-on': activo, 'agua-off': !activo}">
-      <ion-icon slot="start" name="water-outline" class="agua-boton"></ion-icon>
-      <p style="margin-right: 55.5%; margin-bottom: 10%;">
-        Agua
-      </p>
-      <div>
+      [ngClass]="{'agua-on': activo, 'agua-off': !activo}"
+    >
+      <ion-icon slot="start" name="water-outline" size="large" class="agua-boton"></ion-icon>
+      <div style="display: bloc; margin-left: 15%; width: 100%;">
+        <p>Sistema de riego</p>
         <sub
           [ngClass]="{'encendido-agua': activo, 'apagado-agua': !activo}"
           *ngIf="riego_on_off"
@@ -114,6 +104,5 @@
         </sub>
       </div>
     </ion-button>
-    </div>
-  </ion-content>
-
+  </div>
+</ion-content>

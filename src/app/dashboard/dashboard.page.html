@@ -85,15 +85,24 @@
       >
         {{ data3 }}%
       </div>
-      <ion-text class="luz-solar">Clima</ion-text>
+      <h1 class="luz-solar">Clima</h1>
     </div>
+
+    <ion-card>
+      <h5>
+      <img alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/4949/4949153.png" />
+      </h5>
+      <ion-card-header>
+        <ion-card-title class="Soleado">Esta despejado</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
 
     <ion-button
       (click)="menuRiego()"
-      [ngClass]="{'agua-on': activo, 'agua-off': !activo}"
-    >
+      [ngClass]="{'agua-on': activo, 'agua-off': !activo}">
       <ion-icon slot="start" name="water-outline" class="agua-boton"></ion-icon>
-      <p style="margin-right: 54.5%; margin-bottom: 15%; text-transform: none">
+      <p style="margin-right: 55.5%; margin-bottom: 10%;">
         Agua
       </p>
       <div>

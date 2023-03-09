@@ -195,7 +195,7 @@ export class DashboardPage implements OnInit {
         {
           text: 'Entendido',
           cssClass: 'alert-button-confirm',
-        },
+        },  
       ],
     });
   

@@ -37,6 +37,8 @@ export class DashboardPage implements OnInit {
     private dataService: RealtimeDatabaseService
   ) {}
 
+    
+
   //Alerta de riego
   async riegoAlert() {
     const alert = await this.alertController.create({

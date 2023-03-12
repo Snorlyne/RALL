@@ -5,10 +5,6 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar class="fondo">
-    <ion-buttons slot="primary">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-
     <ion-grid style="width: 95%">
       <ion-row>
         <ion-col>
@@ -20,7 +16,7 @@
           </div>
         </ion-col>
         <ion-col size="auto">
-          <h5 [routerLink]="['/login']" style="margin-top: 35%;">Historial</h5>
+          <h5 [routerLink]="['/historial']" style="margin-top: 38%;">Historial</h5>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -97,7 +93,7 @@
           </ion-button>
         </ion-col>
         <ion-col size="3">
-          <ion-button class="programable" expand="block">
+          <ion-button (click)="riegoProgramado()" class="programable" expand="block">
             <ion-icon size="large" name="time-outline"> </ion-icon>
           </ion-button>
         </ion-col>

@@ -1,9 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>historial</ion-title>
+<ion-header class="fondo">
+  <ion-toolbar class="fondo-tool">
+    <ion-buttons slot="start">
+      <ion-back-button
+        style="color: #000000"
+        default-href="dashboard"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="fondo">
+    <ion-title> <h1 style="color: #252525">Historial</h1></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true" class="fondo">
+  <ion-card *ngFor="let fecha of fechas" class="fondo">
+    <ion-card-header>
+      <ion-card-title class="card-content">{{fecha.tipo}}</ion-card-title>
+      <ion-card-subtitle>{{fecha.mes}} {{fecha.dia}}, {{fecha.year}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="fondo">
+      <ion-list class="fondo">
+        <ion-item class="fondo card-content">
+          <ion-thumbnail slot="start">
+            <img
+            alt="Tipo" src="{{fecha.img}}"
+            />
+          </ion-thumbnail>
+          <ion-label>A las: {{fecha.hora}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

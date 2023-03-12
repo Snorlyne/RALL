@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { RealtimeDatabaseService } from '../services/realtime-database.service';
+import { PickerController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
+import type { ToastOptions } from '@ionic/angular';
 
 @Component({
   selector: 'dashboard-page',
@@ -28,16 +31,23 @@ export class DashboardPage implements OnInit {
 
   imgSoleado = './assets/images/Sun.png';
   imgLluvia = './assets/images/llovizna.png';
-  clima_sol_lluvia: string = 'Soleado';
+  clima_sol_lluvia: string = 'Despejado';
   llovido = false;
   activar_tras_llovido = false;
+  selectedTime: string = '06:00';
 
   constructor(
     private alertController: AlertController,
-    private dataService: RealtimeDatabaseService
+    private dataService: RealtimeDatabaseService,
+    private pickerCtrl: PickerController,
+    private toastController: ToastController
   ) {}
 
-    
+  async presentToast(opts: ToastOptions) {
+    const toast = await this.toastController.create(opts);
+
+    await toast.present();
+  }
 
   //Alerta de riego
   async riegoAlert() {
@@ -53,8 +63,6 @@ export class DashboardPage implements OnInit {
           text: 'Si',
           cssClass: 'alert-button-confirm',
           handler: () => {
-            console.log('Acción confirmada');
-            // Aquí puedes llamar a la función que desees
             this.activo = true;
             this.enviarDatos();
           },
@@ -73,8 +81,10 @@ export class DashboardPage implements OnInit {
         this.activo = false;
         this.enviarDatos();
       }
-    } else if (this.activar_tras_llovido == true) {
+    } else if (this.activar_tras_llovido == true && this.data3 > 40) {
       this.notificacionLluvia();
+    } else if (this.activar_tras_llovido == true && this.data3 <= 40) {
+      this.notificacionLluvia2();
     }
   }
 
@@ -90,8 +100,6 @@ export class DashboardPage implements OnInit {
       const ruta = '/Jardin/activar_riego';
       const datos = false;
       this.dataService.activar_riego(ruta, datos);
-      this.riegoActivo = false;
-      this.riego_on_off = 'Apagado';
       this.regar();
     }
   }
@@ -120,18 +128,20 @@ export class DashboardPage implements OnInit {
     //comparación e insertación de la imagen dinamica
     this.dataService.leerDatos('/Jardin/lluvia').subscribe((data) => {
       this.data3 = data;
-      if (this.data3 <= 30) {
+      if (this.data3 <= 40) {
         this.rutaImg = this.imgSoleado;
-        this.clima_sol_lluvia = 'Soleado';
-        if(this.activar_tras_llovido == true){
+        this.clima_sol_lluvia = 'Despejado';
+        if (this.activar_tras_llovido == true) {
           this.llovido = false;
           this.regar();
         }
-      } else if (this.data3 > 30) {
+      } else if (this.data3 > 40) {
         this.rutaImg = this.imgLluvia;
         this.clima_sol_lluvia = 'Está lloviendo!';
         this.llovido = true;
         this.activar_tras_llovido = true;
+        this.riegoActivo = false;
+        this.riego_on_off = 'Apagado';
         this.dejar();
       }
     });
@@ -146,7 +156,7 @@ export class DashboardPage implements OnInit {
 
   //cronometro
   regar() {
-    if (this.riegoActivo == false && this.llovido == false ) {
+    if (this.riegoActivo == false && this.llovido == false) {
       setTimeout(() => {
         this.minutos = this.minutos + 1;
         if (this.minutos == 60) {
@@ -156,10 +166,10 @@ export class DashboardPage implements OnInit {
         this.horas2 = this.horas;
         this.minutos2 = this.minutos;
         this.regar();
-        if(this.minutos2 >= 4){
+        if (this.horas2 >= 8) {
           this.activar_tras_llovido = false;
         }
-      }, 3000);
+      }, 60000);
     }
   }
   async notificacionRiego() {
@@ -181,7 +191,9 @@ export class DashboardPage implements OnInit {
   async notificacionLluvia() {
     const alert = await this.alertController.create({
       header: 'Cuidado!',
-      message: 'Debido a que se ha detectado lluvia, recomendamos no activar el sistema de riego durante las proximas 8hrs',
+      subHeader: 'Se ha detectado lluvia',
+      message:
+        'El dispositivo de riego no se puede encender',
       cssClass: 'custom-alert',
       buttons: [
         {
@@ -192,5 +204,116 @@ export class DashboardPage implements OnInit {
     });
 
     await alert.present();
+  }
+  async notificacionLluvia2() {
+    const alert = await this.alertController.create({
+      header: 'Cuidado!',
+      message:
+        'Debido a que se ha detectado lluvia, recomendamos no activar el sistema de riego durante las proximas 8hrs',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'Continuar',
+          cssClass: 'alert-button-cancel',
+          handler: () => {
+            this.activar_tras_llovido = false;
+            this.enviarDatos();
+          },
+        },
+        {
+          text: 'Entendido',
+          cssClass: 'alert-button-confirm',
+        }
+      ],
+    });
+
+    await alert.present();
+  }
+  async showTimePickerAlert() {
+    const picker = await this.pickerCtrl.create({
+      columns: [
+        {
+          name: 'hours',
+          options: this.generateHours(),
+        },
+        {
+          name: 'minutes',
+          options: this.generateMinutes(),
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Aceptar',
+          handler: (data) => {
+            this.selectedTime = data.hours.text + ':' + data.minutes.text;
+            const ruta = '/Jardin/regado';
+            const datos = this.selectedTime;
+            this.dataService.enviar_hora(ruta, datos);
+            this.AlertaHora();
+          },
+        },
+      ],
+    });
+
+    await picker.present();
+  }
+
+  generateHours() {
+    let hours = [];
+    for (let i = 0; i < 24; i++) {
+      let hour = i < 10 ? '0' + i : i;
+      hours.push({ text: hour.toString(), value: hour });
+    }
+    return hours;
+  }
+
+  generateMinutes() {
+    let minutes = [];
+    for (let i = 0; i < 60; i++) {
+      let minute = i < 10 ? '0' + i : i;
+      minutes.push({ text: minute.toString(), value: minute });
+    }
+    return minutes;
+  }
+
+  async riegoProgramado() {
+    const alert = await this.alertController.create({
+      header: 'Hora programada',
+      message: `La hora seleccionada es: ${this.selectedTime}`,
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'Cerrar',
+          cssClass: 'alert-button-cancel',
+        },
+        {
+          text: 'Establecer',
+          cssClass: 'alert-button-confirm',
+          handler: () => {
+            this.showTimePickerAlert();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+  async AlertaHora() {
+    await this.presentToast({
+      duration: 3000,
+      message: `Se ha establecido la hora a las: ${this.selectedTime}`,
+      buttons: [
+        {
+          text: 'Cambiar',
+          handler: () => {
+            this.showTimePickerAlert();
+          },
+        },
+      ],
+    });
   }
 }

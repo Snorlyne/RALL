@@ -1,10 +1,5 @@
 <ion-header class="fondo">
   <ion-toolbar class="fondo">
-    <ion-buttons slot="start">
-      <ion-back-button default-href="login"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar class="fondo">
     <ion-grid style="width: 95%">
       <ion-row>
         <ion-col>
@@ -15,8 +10,9 @@
             </div>
           </div>
         </ion-col>
-        <ion-col size="auto">
-          <h5 [routerLink]="['/historial']" style="margin-top: 38%;">Historial</h5>
+        <ion-col size="3">
+          <h5 [routerLink]="['/historial']" style="margin-top: 30%; margin-right: 1%;">Historial <ion-icon style="position: absolute; padding-top: 1%;padding-left: 8%" name="chevron-forward-outline" size="small"></ion-icon></h5>
+          
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -57,7 +53,7 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card style="margin-bottom: 2%">
+    <ion-card style="margin-bottom: 8%">
         <ion-img alt="Clima" [src]="rutaImg"></ion-img>
 
       <ion-card-header>

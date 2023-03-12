@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
 import { RealtimeDatabaseService } from '../services/realtime-database.service';
 @Component({
   selector: 'app-historial',

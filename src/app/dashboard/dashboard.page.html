@@ -36,21 +36,19 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-card class="counter">
-      <ion-card-content class="counter-content">
-        <div class="counter-row">
-          <div class="counter-column">
-            <div class="counter-value" *ngIf="horas < 10">0{{horas}}</div>
-            <div class="counter-value" *ngIf="horas >= 10">{{horas}}</div>
-            <div class="counter-label">Horas</div>
-          </div>
-          <div class="counter-column">
-            <div class="counter-value" *ngIf="minutos < 10">0{{minutos}}</div>
-            <div class="counter-value" *ngIf="minutos >= 10">{{minutos}}</div>
-            <div class="counter-label">Minutos</div>
-          </div>
-        </div>
-      </ion-card-content>
+    <ion-card class="counter" *ngFor="let fecha of fechas" class="fondo">
+          <ion-list class="fondo" style="background-color: white;">
+            <ion-card-subtitle style="margin-left: 3%;">{{fecha.mes}} {{fecha.dia}}</ion-card-subtitle>
+            <ion-item lines="none" class="fondo card-content">
+              
+              <ion-thumbnail slot="start">
+                <img
+                alt="Tipo" src="{{fecha.img}}"
+                />
+              </ion-thumbnail>
+              <ion-label style="margin-right: 5%;">A las: {{fecha.hora}} hrs</ion-label>
+            </ion-item>
+          </ion-list>
     </ion-card>
 
     <ion-card style="margin-bottom: 8%">

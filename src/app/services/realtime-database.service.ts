@@ -15,7 +15,11 @@ export class RealtimeDatabaseService {
     return this.db.object(ruta).valueChanges();
   }
   leerDatos2() {
-    return this.db.list('Jardin/historial', ref => ref.orderByChild('dia')).valueChanges();
+    return this.db.list('Jardin/historial').valueChanges();
+    
+  }
+  leerDatos3() {
+    return this.db.list('Jardin/historial', ref => ref.orderByChild('dia').limitToLast(1)).valueChanges();
     
   }
   activar_riego(ruta: string, datos: any) {

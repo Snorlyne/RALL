@@ -2,13 +2,13 @@
   <ion-toolbar class="fondo-tool">
     <ion-buttons slot="start">
       <ion-back-button
-        style="color: #3880ff"
+        style="color: black"
         default-href="dashboard"
       ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar class="fondo">
-    <ion-title> <h1 style="color: #252525">Historial</h1></ion-title>
+  <ion-toolbar class="fondo-tool">
+    <ion-title> <h1 style="color: #252525;">Historial</h1></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
       <ion-card-title class="card-content">{{fecha.tipo}}</ion-card-title>
       <ion-card-subtitle>{{fecha.mes}} {{fecha.dia}}, {{fecha.year}}</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content class="fondo">
+    <ion-card-content class="fondo" style="background: #e7eedd;">
       <ion-list class="fondo">
         <ion-item class="fondo card-content">
           <ion-thumbnail slot="start">

@@ -1,5 +1,11 @@
 .fondo{
-  --background: #ffff;
+  --background: #d0e3b6;
+}
+.counter{
+  --background:  #338b85;
+}
+.color-fond{
+  --background:  #e7eedd;
 }
 
 .agua-off {
@@ -180,7 +186,6 @@
   left: 40%;
   top: 27%;
 }
-
 
 ion-fab-button::part(native) {
   border-radius: 15px;

@@ -1,6 +1,6 @@
 <ion-header class="fondo">
   <ion-toolbar class="fondo">
-    <ion-grid style="width: 95%">
+    <ion-grid style="width: 95%" style="background-color: #aed87e">
       <ion-row>
         <ion-col>
           <div style="display: flex; justify-content: stretch">
@@ -11,8 +11,7 @@
           </div>
         </ion-col>
         <ion-col size="3">
-          <h5 [routerLink]="['/historial']" style="margin-top: 31%; margin-right: 0%; color: #3880ff;">Historial <ion-icon style="position: absolute; padding-top: 1%;padding-left: 3%;" color="primary" name="chevron-forward-outline" size="small"></ion-icon></h5>
-          
+          <h5 [routerLink]="['/historial']" style="margin-top: 31%; margin-right: 0%; color: black;">Historial <ion-icon style="position: absolute; padding-top: 1%;padding-left: 3%;" color="black" name="chevron-forward-outline" size="small"></ion-icon></h5>          
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -36,10 +35,10 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-card class="counter" *ngFor="let fecha of fechas" class="fondo">
-          <ion-list class="fondo" style="background-color: white;">
-            <ion-card-subtitle style="margin-left: 3%;">{{fecha.mes}} {{fecha.dia}}</ion-card-subtitle>
-            <ion-item lines="none" class="fondo card-content">
+    <ion-card  *ngFor="let fecha of fechas">
+          <ion-list style="background-color: #e7eedd">
+            <ion-card-subtitle style="margin-left: 3%; color:rgb(49, 49, 49);">{{fecha.mes}} {{fecha.dia}}</ion-card-subtitle>
+            <ion-item lines="none" class="color-fond card-content" >
               
               <ion-thumbnail slot="start">
                 <img
@@ -51,10 +50,9 @@
           </ion-list>
     </ion-card>
 
-    <ion-card style="margin-bottom: 8%">
-        <ion-img alt="Clima" [src]="rutaImg"></ion-img>
-
-      <ion-card-header>
+    <ion-card style="margin-bottom: 8%" style="background-color: #e7eedd; height: 420px;">
+        <ion-img alt="Clima" [src]="rutaImg" style="height: 300px; margin-top: 8%;"></ion-img>
+        <ion-card-header style="margin-top: 8%;">
         <ion-card-title class="Soleado" *ngIf="clima_sol_lluvia">
           {{clima_sol_lluvia}}</ion-card-title
         >
